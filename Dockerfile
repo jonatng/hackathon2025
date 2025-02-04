@@ -7,8 +7,15 @@ WORKDIR /app
 # Copy the current directory contents into the container at /app
 COPY . /app
 
-# Install any needed packages specified in requirements.txt and gunicorn
+# Install dependencies as root (temporary) to build image layers
 RUN pip install --no-cache-dir -r requirements.txt gunicorn
+
+# Create a non-root user.
+RUN adduser --disabled-password --gecos "" myappuser \
+    && chown -R myappuser /app
+
+# Switch to non-root user.
+USER myappuser
 
 # Make port 8080 available to the world outside this container
 EXPOSE 8080
