@@ -19,5 +19,18 @@ RUN pip install --no-cache-dir -r requirements.txt uwsgi
 # Make port 8080 available to the world outside this container
 EXPOSE 8080
 
-# Run uWSGI
-CMD ["uwsgi", "--http", "0.0.0.0:8080", "--wsgi-file", "app.py", "--callable", "app", "--processes", "4", "--threads", "2", "--buffer-size", "32768"]
+# Run uWSGI with improved configuration
+CMD ["uwsgi", \
+    "--http", "0.0.0.0:8080", \
+    "--wsgi-file", "app.py", \
+    "--callable", "app", \
+    "--master", \
+    "--enable-threads", \
+    "--processes", "2", \
+    "--threads", "2", \
+    "--buffer-size", "32768", \
+    "--log-5xx", \
+    "--log-4xx", \
+    "--log-slow", \
+    "--log-date", \
+    "--log-x-forwarded-for"]

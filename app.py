@@ -78,5 +78,9 @@ def get_data():
     # Return the model's response along with the session id
     return jsonify({"status": "success", "generated_text": generated_text, "session_id": session_id})
 
+@app.route('/health', methods=['GET'])
+def basic_health_check():
+    return jsonify({"status": "alive"}), 200
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080) 
