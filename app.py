@@ -34,6 +34,10 @@ def call_llm(inference_client: InferenceClient, prompt: str):
     )
     return json.loads(response.decode())[0]["generated_text"]
 
+@app.route('/', methods=['GET'])
+def health_check():
+    return jsonify({"status": "success", "message": "Hugging Space server is running normally"})
+
 @app.route('/api/data', methods=['POST'])
 def get_data():
     # Parse JSON request
