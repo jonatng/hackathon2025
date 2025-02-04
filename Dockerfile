@@ -18,21 +18,8 @@ COPY . /app
 # Install Python dependencies and uWSGI
 RUN pip install --no-cache-dir -r requirements.txt uwsgi
 
-# Make port 8080 available to the world outside this container
+# Make port 7680 available to the world outside this container
 EXPOSE 7680
 
-# Run uWSGI with improved configuration
-CMD ["uwsgi", \
-    "--http", "0.0.0.0:7680", \
-    "--wsgi-file", "app.py", \
-    "--callable", "app", \
-    "--master", \
-    "--enable-threads", \
-    "--processes", "2", \
-    "--threads", "2", \
-    "--buffer-size", "32768", \
-    "--log-5xx", \
-    "--log-4xx", \
-    "--log-slow", \
-    "--log-date", \
-    "--log-x-forwarded-for"]
+# Run uWSGI with the ini file
+CMD ["uwsgi", "--ini", "uwsgi.ini"]
