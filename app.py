@@ -34,7 +34,12 @@ def call_llm(inference_client: InferenceClient, prompt: str):
 def get_data():
     # Parse JSON request
     data = request.get_json()
-    prompt = data.get("prompt", "hello how is your day going?")
+    
+    # Check if prompt is provided in the request
+    if not data or 'prompt' not in data:
+        return jsonify({"status": "error", "message": "No prompt provided in request"}), 400
+    
+    prompt = data['prompt']
 
     # Call the language model
     try:
