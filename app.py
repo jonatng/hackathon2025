@@ -6,6 +6,7 @@ import json
 from uuid import uuid4
 
 app = Flask(__name__)
+
 CORS(app)
 
 # Read the Hugging Face token from an environment variable
