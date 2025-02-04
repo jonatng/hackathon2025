@@ -14,4 +14,4 @@ RUN pip install --no-cache-dir -r requirements.txt gunicorn
 EXPOSE 8080
 
 # Use Gunicorn to run the app
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "--log-level", "debug", "--capture-output", "--enable-stdio-inheritance", "app:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "--log-level", "debug", "--pythonpath", "/app", "app:app"]
