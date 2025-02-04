@@ -83,4 +83,4 @@ def basic_health_check():
     return jsonify({"status": "alive"}), 200
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080) 
+    app.run(host='0.0.0.0', port=7680) 
