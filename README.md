@@ -1,53 +1,74 @@
 # Caregiver: AI-Powered Assistance for Assisted Living Facilities
 
-Caregiver is an innovative application designed to streamline the management of assisted living facilities. It empowers administrators with AI-driven insights, efficient information retrieval, and data visualizations to enhance resident care and operational efficiency.  This README provides a comprehensive guide to the project, covering its architecture, functionalities, and setup.
+Caregiver is an innovative AI-driven application designed to optimize the management of **assisted living facilities**. By integrating **conversational AI**, **vector search technology**, **data visualization**, and **real-time event notifications**, Caregiver empowers facility administrators with **intelligent insights** and **enhanced operational efficiency**. The application is designed to provide **accurate medical guidance, streamlined event tracking, and engaging cognitive exercises** for residents.
 
-## Table of Contents
+This README provides an in-depth guide to the **architecture, features, and setup** of the Caregiver system.
 
-*   Project Overview
-*   Key Features
-*   Technology Stack
-*   Directory Structure
-*   Backend API (`backend API`)
-*   Data Analysis and Visualization (`data`)
-*   Frontend Components (`front-end components`)
-*   SQL Data Visualizations (`SQL`)
-*   Vector Database Configuration (`Vector database configurations`)
-*   Installation
-*   Usage
-*   Contributing
-*   License
+---
 
-## Project Overview
+## **Table of Contents**
 
-Caregiver addresses the complex needs of assisted living facility management by integrating cutting-edge technologies.  At its core, Caregiver utilizes a Hugging Face Transformer-based LLM (Large Language Model) to provide intelligent assistance. This LLM, specifically the "tiny-zero" model (a distilled version of DeepSeek), powers a conversational chatbot capable of answering administrator queries, providing information about upcoming events, and retrieving resident-specific data.
+- [Project Overview](#project-overview)
+- [Key Features](#key-features)
+- [Technology Stack](#technology-stack)
+- [Directory Structure](#directory-structure)
+- [Backend API (`backend-api`)](#backend-api)
+- [Data Analysis and Visualization (`data`)](#data-analysis-and-visualization)
+- [Frontend Components (`frontend-components`)](#frontend-components)
+- [SQL Data Visualizations (`SQL`)](#sql-data-visualizations)
+- [Vector Database Configuration (`vector-database-configurations`)](#vector-database-configuration)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
-The application leverages a Redis database as both a vector database and a store for conversation history.  The vector database stores crucial information about events, resident averages (e.g., dental work needs), and other relevant data. This allows the LLM to access and provide contextually relevant information. The conversation history feature enables the chatbot to maintain context and offer more personalized interactions.
+---
 
-Caregiver's user interface is built using Oracle Apex, a low-code development platform. Oracle Apex also hosts relational SQL databases that are used for generating insightful data visualizations related to resident health and well-being.  Furthermore, Caregiver includes a scheduled task that sends daily SMS notifications to the administrator via Twilio, informing them about upcoming events.  An interactive memory game is also included to support resident cognitive function.
+## **Project Overview**
 
-## Key Features
+Caregiver is built to address the **complex needs** of **assisted living facilities** by offering a combination of **AI-powered assistance**, **event tracking**, and **data visualization**. The application features a conversational **chatbot** powered by **Hugging Face Transformers**, which allows administrators to retrieve **medical information, resident statistics, and facility updates** through natural language queries.
 
-*   **AI-Powered Assistance:**  The "tiny-zero" LLM provides intelligent responses to administrator queries, retrieves information from the vector database, and maintains conversation history.
-*   **Vector Database:** Redis database stores event information, resident averages, and other critical data for quick and accurate retrieval by the LLM.
-*   **Conversation History:**  Redis database stores conversation history, enabling contextual and personalized interactions.
-*   **Data Visualization:** Oracle Apex and SQL queries generate visualizations of resident health and well-being data.
-*   **SMS Event Notifications:** Daily SMS reminders about upcoming events are sent via Twilio.
-*   **Interactive Memory Game:** A memory game is included as a cognitive exercise for residents.
+Additionally, the system integrates **Redis** as a **vector database** and a **conversation history store**, ensuring that AI responses remain **contextually relevant**.
 
-## Technology Stack
+Key **functional components** include:
 
-*   **LLM:** Hugging Face Transformers (tiny-zero model - distilled DeepSeek)
-*   **Database:** Redis
-*   **Frontend:** Oracle Apex
-*   **Data Visualization:** SQL (Oracle Apex)
-*   **SMS Notifications:** Twilio
-*   **Programming Languages:** Python, JavaScript, HTML, CSS
-*   **Deployment:** Docker, Hugging Face Spaces
+- **Conversational AI assistant** for medical and facility-related queries
+- **Real-time event notifications** sent via **Twilio SMS**
+- **Dynamic SQL-based data visualizations** in **Oracle APEX**
+- **An interactive memory game** designed to engage residents cognitively
 
-## Directory Structure
+The Caregiver **frontend** is built using **Oracle APEX**, which provides **SQL-driven dashboards** for administrators to monitor resident health trends and facility operations.
+
+---
+
+## **Key Features**
+
+- **AI-Powered Assistance:** Uses **TinyZero (a Hugging Face model)** to provide medical insights and facility-related information.
+- **Vector Database (Redis):** Stores event data and health statistics for efficient AI retrieval.
+- **Conversation History:** Enables contextual, personalized AI interactions.
+- **Data Visualization:** SQL-based dashboards in **Oracle APEX** present key health metrics.
+- **SMS Notifications:** Daily event reminders sent via **Twilio API**.
+- **Interactive Memory Game:** AI-powered historical guessing game to engage residents.
+
+---
+
+## **Technology Stack**
+
+- **LLM:** Hugging Face Transformers (**TinyZero model**, distilled from DeepSeek R1 Zero)
+- **Database:** Redis (Vector database + Key-Value store for chatbot memory)
+- **Frontend:** Oracle APEX
+- **Data Visualization:** SQL queries (Oracle APEX dashboards)
+- **Event Notifications:** Twilio API (SMS reminders)
+- **Programming Languages:** Python, JavaScript, HTML, CSS
+- **Deployment:** Docker, Hugging Face Spaces
+
+---
+
+## **Directory Structure**
+
+```
 Caregiver/
-├── backend API/
+├── backend-api/
 │   ├── app.py
 │   ├── event_notifier.py
 │   ├── Dockerfile
@@ -56,101 +77,78 @@ Caregiver/
 │   ├── uwsgi.ini
 │   └── .env (Not in repo)
 ├── data/
-│   ├── *.ipynb (Jupyter Notebook)
-│   └── environment.yml
-├── front-end components/
-│   ├── medical chatbot/
-│   │   ├── index.html
-│   │   ├── index.js
-│   │   └── style.css
-│   ├── memory game/
-│   │   ├── index.html
-│   │   ├── index.js
-│   │   └── style.css
-│   └── changing colors header/
-│       ├── index.html
-│       └── style.css
+│   ├── Healthy_Aging.ipynb (Jupyter Notebook for analysis)
+│   ├── environment.yml
+├── frontend-components/
+│   ├── changing-colors-header/
+│   ├── medical-chatbot/
+│   ├── memory-game/
 ├── SQL/
-│   ├── dental information page
-│   ├── disability information page
-│   ├── home page
-│   └── mental distress page
-├── Vector database configurations/
+│   ├── dental_information_page.sql
+│   ├── disability_information_page.sql
+│   ├── home_page.sql
+│   ├── mental_distress_page.sql
+├── vector-database-configurations/
 │   ├── init_redis.py
-│   └── debug_read_redis.py
-├── .gitattributes
+│   ├── debug_read_redis.py
 └── .gitignore
+```
 
-## Backend API (`backend API`)
+---
 
-The `backend API` directory contains the core logic of the application, hosted on Hugging Face Spaces.
+## **Backend API (`backend-api`)**
 
-*   **`app.py`:** This Python file serves as the main application. It handles API requests, interacts with the "tiny-zero" LLM using Hugging Face Transformers, and queries the Redis database. Key endpoints include:
-    *   `/api/data`:  Handles chatbot conversations, retrieves medical information, and performs vector database lookups.
-    *   `/api/games/start`: Initiates the memory game.
-    *   `/api/games/question`: Retrieves a question for the memory game.
-    *   `/api/games/guess`: Processes user guesses in the memory game.
-*   **`event_notifier.py`:** This script is responsible for sending daily SMS notifications about upcoming events using the Twilio API.
-*   **`Dockerfile`:**  This file defines the Docker image used to build and deploy the backend API to Hugging Face Spaces.
-*   **`requirements.txt`:** Lists all the Python dependencies required for the backend API.
-*   **`runtime.txt`:** Specifies the runtime environment for the Hugging Face Space.
-*   **`uwsgi.ini`:** Contains production server configurations for uWSGI, used by Hugging Face Spaces.
-*   **`.env` (Not in repo):**  This file (not included in the repository for security reasons) stores environment variables, such as API keys, database credentials, and other sensitive information.
+The **backend API** is hosted on **Hugging Face Spaces** and serves as the **core logic layer**. It interacts with the **AI model, Redis database, and Twilio API** to provide real-time responses and event notifications.
 
-## Data Analysis and Visualization (`data`)
+### **Key Components:**
 
-The `data` directory contains scripts used for data analysis and visualization.
+- **`app.py`**
+  - Handles API requests
+  - Integrates with the **LLM (TinyZero or Minstrel)** for medical chatbot functionality
+  - Queries the Redis vector database for event lookups
+  - Key API endpoints:
+    - `/api/data`: AI-powered medical & facility chatbot
+    - `/api/games/start`: Starts the **Memory Game**
+    - `/api/games/question`: Fetches historical clues from the AI
+    - `/api/games/guess`: Processes user guesses
 
-*   **`*.ipynb` (Jupyter Notebook):** This Jupyter Notebook contains the code used to analyze the "Healthy Alzheimer's Disease and Healthy Aging Data" dataset.  It generates visualizations that are later used in the Oracle Apex frontend.
-*   **`environment.yml`:**  This file specifies the conda environment used for data analysis.
+- **`event_notifier.py`**
+  - Queries the Redis vector database for upcoming events
+  - Sends **daily SMS reminders** to administrators using **Twilio API**
 
-## Frontend Components (`front-end components`)
+---
 
-This directory contains the HTML, CSS, and JavaScript files for the custom frontend components used in Oracle Apex.
+## **Installation**
 
-*   **`medical chatbot` (directory):** Contains the files for the medical chatbot component.
-    *   `index.html`:  HTML structure for the chatbot interface.
-    *   `index.js`: JavaScript logic for the chatbot, including communication with the backend API.
-    *   `style.css`: CSS styles for the chatbot component.
-*   **`memory game` (directory):** Contains the files for the memory game component.
-    *   `index.html`:  HTML structure for the memory game interface.
-    *   `index.js`: JavaScript logic for the memory game.
-    *   `style.css`: CSS styles for the memory game component.
-*   **`changing colors header` (directory):** Contains the files for the changing colors header component.
-    *   `index.html`: HTML structure for the header.
-    *   `style.css`: CSS styles for the header.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-repo/caregiver.git
+   cd caregiver
+   ```
+2. Install Python dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Set up Redis database and initialize vectors:
+   ```bash
+   python vector-database-configurations/init_redis.py
+   ```
+4. Configure Oracle APEX frontend & import SQL scripts.
 
-## SQL Data Visualizations (`SQL`)
+---
 
-This directory contains the SQL queries used to generate data visualizations within Oracle Apex. Each file represents a different page or visualization. Each of the "page" files contains four SQL queries, broken down by Age, Location, Gender, and Ethnicity.
+## **Usage**
 
-*   **`dental information page`:** Contains SQL queries to visualize dental health data.
-*   **`disability information page`:** Contains SQL queries to visualize disability-related data.
-*   **`home page`:** Contains SQL queries for the main dashboard visualizations.
-*   **`mental distress page`:** Contains SQL queries to visualize mental health data.
+- Access the **Oracle APEX frontend**.
+- Use the **AI chatbot** for facility & medical queries.
+- View **real-time data visualizations**.
+- Receive **SMS notifications** for upcoming events.
+- Engage residents with the **Memory Game**.
 
-## Vector Database Configuration (`Vector database configurations`)
+---
 
-This directory contains Python scripts for interacting with the Redis vector database.
+## **Conclusion**
 
-*   **`init_redis.py`:** This script connects to the Redis database, creates the necessary vector index, and populates the database with initial data.
-*   **`debug_read_redis.py`:** This script performs read operations on the Redis database to verify that data has been written correctly.
+Caregiver provides an **AI-powered, data-driven** solution for assisted living facilities. The integration of **LLMs, vector search, SQL dashboards, and real-time notifications** makes it a **powerful tool** for facility management.
 
-## Installation
-
-*(Detailed instructions on setting up the project locally. This should include:)*
-
-*   *Installing Python dependencies (`pip install -r requirements.txt`)*
-*   *Setting up the Redis database*
-*   *Configuring Oracle Apex (connecting to the database, importing SQL scripts, creating frontend components)*
-*   *Setting up environment variables (creating the `.env` file)*
-*   *Building and deploying the backend API to Hugging Face Spaces (using Docker)*
-
-## Usage
-
-*(Detailed instructions on how to use the application.  This should include:)*
-
-*   *Accessing the Oracle Apex frontend*
-*   *Interacting with the chatbot (asking questions, retrieving information)*
-*   *Playing the memory game*
-*   *Interpreting the data visualizations on the different pages*
+🚀 *For future production deployment, we would optimize by integrating TinyZero to minimize compute costs.*
