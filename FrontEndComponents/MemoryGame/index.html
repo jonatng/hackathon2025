@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guess the Year</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="game-container">
+    <h1>Guess the Year</h1>
+
+    <!-- 1. Start Game -->
+    <div class="section">
+      <h2>Start New Game</h2>
+      <button type="button" id="startGameBtn">Start Game</button>
+      <div id="startGameResult" class="log"></div>
+    </div>
+
+    <!-- 2. Ask a Question -->
+    <div class="section">
+      <h2>Ask a Question</h2>
+      <input type="text" id="questionInput" placeholder="Type your question...">
+      <button type="button" id="askQuestionBtn">Ask</button>
+      <div id="questionLog" class="log"></div>
+    </div>
+
+    <!-- 3. Make a Guess -->
+    <div class="section">
+      <h2>Make a Guess</h2>
+      <input type="number" id="guessInput" placeholder="Enter a year">
+      <button type="button" id="makeGuessBtn">Guess</button>
+      <div id="guessLog" class="log"></div>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>

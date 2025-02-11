@@ -1,0 +1,79 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background: #121212;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Game Container */
+  .game-container {
+    max-width: 500px;
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Headings */
+  h1, h2 {
+    text-align: center;
+    color: #ffffff;
+  }
+  
+  /* Sections */
+  .section {
+    margin-bottom: 20px;
+  }
+  
+  /* Inputs */
+  input[type="text"], input[type="number"] {
+    width: calc(100% - 90px);
+    padding: 10px;
+    border: 1px solid #888;
+    border-radius: 4px;
+    font-size: 16px;
+    background: #252525;
+    color: #ffffff;
+  }
+  
+  /* Buttons */
+  button {
+    width: 80px;
+    padding: 10px;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #1669c1;
+  }
+  
+  button:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+  }
+  
+  /* Log Areas */
+  .log {
+    background: #333;
+    border: 1px solid #555;
+    border-radius: 4px;
+    min-height: 60px;
+    padding: 10px;
+    margin-top: 10px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    overflow-y: auto;
+    max-height: 150px;
+  }
+  
