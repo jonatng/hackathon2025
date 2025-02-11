@@ -1,0 +1,50 @@
+/* Header Container */
+.header-container {
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    margin: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    animation: gradientChange 10s ease infinite;
+    background-size: 400% 400%;
+    background-image: linear-gradient(
+        45deg,
+        #4B0082,  /* Indigo */
+        #800080,  /* Purple */
+        #483D8B,  /* Dark Slate Blue */
+        #800000,  /* Dark Red */
+        #4B0082   /* Back to Indigo for smooth transition */
+    );
+}
+
+/* Gradient Animation */
+@keyframes gradientChange {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Header Text */
+.header-text {
+    color: white;
+    font-family: 'Arial', sans-serif;
+    font-size: 2.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .header-text {
+        font-size: 1.8em;
+    }
+}
